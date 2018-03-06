@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+  <html>
+
+      <head>
+      <title>The Psychic Game</title>
+      <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="assets/javascript/* game.js">  
+      <link rel="stylesheet" type="text/css" href="Portfolio/Portfolio.html"> 
+      <meta charset="UTF-8">
+      </head>
+
+
+      <body>
+
+      <div id="game">
+
+      <h1>The Psychic Game</h1>
+      <br>
+      <p>Guess what letter I'm thinking of!</p>
+      <br>
+      <p>Total Wins: </p>
+      <br>
+      <p>Total Losses: </p>
+      <br>
+      <p>Guesses Left: </p>
+      <br>
+      <p>Your Guesses So Far: </p>
+      </div>
+
+
+      <script type="text/javascript">
+
+       var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];  
+
+
+      var wins = 0;
+      var losses = 0;
+      var guessesLeft = 9;
+      var guessesSoFar = []; 
+
+      
+        document.onkeyup = function(event) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)]; 
+
+          guessesSoFar.push(userGuess); 
+
+          if (userGuess == computerGuess) {
+              wins++;
+              alert('Good job! You Won!');
+              guessesLeft = 10; 
+
+              document.querySelector('#game').innerHTML = html;
+
+          }
+          else if (guessesLeft == 0){
+              losses++;
+              alert('You did not guess correctly. You lost. Try again.');
+              guessesLeft = 9;
+              guessesSoFar.length = 0;
+          }
+          else if (userGuess == computerGuess){
+              guessesLeft--; 
+          }               
+      }
+  </script>
+
+  </body>
+
+  </html>
